@@ -12,7 +12,7 @@ import (
 
 func HandleFixedPointIterationMethod() {
 	os.Stdout.Write([]byte(sisteransi.EraseDown()))
-	prompts.Intro(picocolors.BgYellow(picocolors.Black(" Fixed Point Iteration Method ")))
+	prompts.Intro(picocolors.BgCyan(picocolors.Black(" Fixed Point Iteration Method ")))
 
 	prec, err := getPrecision()
 	handleCancel(err)
@@ -38,7 +38,6 @@ func HandleFixedPointIterationMethod() {
 	prompts.Outro(fmt.Sprintf("Root: %s\nIter: %s\nTime: %s",
 		picocolors.Cyan(fmt.Sprintf("%.3f", solution.Root)),
 		picocolors.Cyan(fmt.Sprintf("%d", len(solution.Steps))),
-		picocolors.Cyan(dur.String()),
-	),
+		picocolors.Cyan(dur.String())),
 	)
 }
