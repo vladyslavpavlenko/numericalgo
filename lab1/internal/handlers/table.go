@@ -12,8 +12,8 @@ func makeTable(steps [][]float64) string {
 
 	t := table.New(&buf)
 	t.SetRowLines(false)
-	t.SetHeaders("i", "x_n", "f(x_n)", "f'(x_n)", "x_(n+1)")
-	t.SetAlignment(table.AlignLeft, table.AlignRight, table.AlignRight, table.AlignRight, table.AlignRight)
+	t.SetHeaders("i", "x", "f(x)")
+	t.SetAlignment(table.AlignLeft, table.AlignRight, table.AlignRight)
 	t.SetDividers(table.UnicodeRoundedDividers)
 	t.SetLineStyle(table.StyleBrightBlack)
 	t.SetHeaderStyle(table.StyleBold)
@@ -21,10 +21,8 @@ func makeTable(steps [][]float64) string {
 	for i, step := range steps {
 		t.AddRow(
 			strconv.Itoa(i+1),
-			fmt.Sprintf("%.3f", step[0]),
-			fmt.Sprintf("%.3f", step[1]),
-			fmt.Sprintf("%.3f", step[2]),
-			fmt.Sprintf("%.3f", step[3]),
+			fmt.Sprintf("%.11f", step[0]),
+			fmt.Sprintf("%.11f", step[1]),
 		)
 	}
 
