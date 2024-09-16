@@ -10,7 +10,7 @@ type Solution struct {
 }
 
 func Solve(prec float64) (s Solution) {
-	x := 50.0
+	x := 2.25
 	s.Steps = [][]float64{}
 	n := calcN(prec)
 
