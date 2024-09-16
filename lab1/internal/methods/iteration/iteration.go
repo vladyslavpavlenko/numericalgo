@@ -10,7 +10,7 @@ type Solution struct {
 }
 
 func Solve(prec float64) (s Solution) {
-	x := 2.25
+	x := 3.75
 	s.Steps = [][]float64{}
 	n := calcN(prec)
 
@@ -28,11 +28,11 @@ func Solve(prec float64) (s Solution) {
 }
 
 func calcN(prec float64) int {
-	return int((math.Log((7-3)/((1-0.74)*prec)))/(math.Log(1/0.74))) + 1
+	return int((math.Log((5-3)/((1-0.48)*prec)))/(math.Log(1/0.48))) + 1
 }
 
 func phi(x float64) float64 {
-	return 4 + 4/x - 16/math.Pow(x, 2)
+	return -(16 / math.Pow(x, 2)) + 4/x + 4
 }
 
 func f(x float64) float64 {
