@@ -1,10 +1,11 @@
 package jacobi
 
 import (
+	"github.com/vladyslavpavlenko/numericalgo/lab2/internal/methods"
 	"math"
 )
 
-func Solve(prec float64) ([]float64, int) {
+func Solve(prec float64) methods.Solution {
 	a := [][]float64{
 		{6, 0, 2, 3},
 		{0, 4, 2, 1},
@@ -45,5 +46,8 @@ func Solve(prec float64) ([]float64, int) {
 		}
 	}
 
-	return x, iterations
+	return methods.Solution{
+		Roots:      x,
+		Iterations: iterations,
+	}
 }
