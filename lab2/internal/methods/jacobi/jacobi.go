@@ -1,11 +1,15 @@
 package jacobi
 
 import (
-	"github.com/vladyslavpavlenko/numericalgo/lab2/internal/methods"
 	"math"
 )
 
-func Solve(prec float64) methods.Solution {
+type Solution struct {
+	Roots []float64
+	Iter  int
+}
+
+func Solve(prec float64) Solution {
 	a := [][]float64{
 		{6, 0, 2, 3},
 		{0, 4, 2, 1},
@@ -18,7 +22,7 @@ func Solve(prec float64) methods.Solution {
 	n := len(x)
 	tmpX := make([]float64, n)
 	maxDiff := 0.0
-	iterations := 0
+	iter := 0
 
 	for {
 		maxDiff = 0
@@ -39,15 +43,15 @@ func Solve(prec float64) methods.Solution {
 				maxDiff = diff
 			}
 		}
-		iterations++
+		iter++
 
 		if maxDiff <= prec {
 			break
 		}
 	}
 
-	return methods.Solution{
-		Roots:      x,
-		Iterations: iterations,
+	return Solution{
+		Roots: x,
+		Iter:  iter,
 	}
 }

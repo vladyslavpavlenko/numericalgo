@@ -7,15 +7,10 @@ import (
 
 const Precision = 0.001
 
-type Solution struct {
-	Roots      []float64
-	Iterations int
-}
-
-func (s *Solution) FormatRoots() string {
+func FormatRoots(roots []float64) string {
 	var sb strings.Builder
-	for i, xi := range s.Roots {
-		if i == len(s.Roots)-1 {
+	for i, xi := range roots {
+		if i == len(roots)-1 {
 			sb.WriteString(fmt.Sprintf("x_%d = %.4f", i+1, xi))
 			continue
 		}

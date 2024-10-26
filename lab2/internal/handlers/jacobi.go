@@ -30,7 +30,7 @@ func Jacobi() {
 
 	prompts.Outro(
 		fmt.Sprintf("Done in %s (%d iterations) ✨",
-			picocolors.Cyan(dur.String()), solution.Iterations,
+			picocolors.Cyan(dur.String()), solution.Iter,
 		),
 	)
 }
