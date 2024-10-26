@@ -22,7 +22,7 @@ func Jacobi() {
 	s.Start("Solving")
 	time.Sleep(50 * time.Millisecond)
 	start := time.Now()
-	solution := jacobi.Solve(prec)
+	solution, iterations := jacobi.Solve(prec)
 	dur := time.Since(start)
 	s.Stop("Solved!", 0)
 	handleCancel(err)
@@ -30,17 +30,17 @@ func Jacobi() {
 	var sb strings.Builder
 	for i, xi := range solution {
 		if i == len(solution)-1 {
-			sb.WriteString(fmt.Sprintf("x_%d = %.6f", i+1, xi))
+			sb.WriteString(fmt.Sprintf("x_%d = %.4f", i+1, xi))
 			continue
 		}
-		sb.WriteString(fmt.Sprintf("x_%d = %.6f\n", i+1, xi))
+		sb.WriteString(fmt.Sprintf("x_%d = %.4f\n", i+1, xi))
 	}
 
 	prompts.Note(sb.String(), prompts.NoteOptions{Title: "Solution"})
 
 	prompts.Outro(
-		fmt.Sprintf("Done in %s ✨",
-			picocolors.Cyan(dur.String()),
+		fmt.Sprintf("Done in %s (%d iterations) ✨",
+			picocolors.Cyan(dur.String()), iterations,
 		),
 	)
 }

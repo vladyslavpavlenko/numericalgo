@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-func Solve(prec float64) []float64 {
+func Solve(prec float64) ([]float64, int) {
 	a := [][]float64{
 		{6, 0, 2, 3},
 		{0, 4, 2, 1},
@@ -14,10 +14,10 @@ func Solve(prec float64) []float64 {
 	b := []float64{24, 18, 21, 15}
 
 	x := []float64{0, 0, 0, 0}
-
 	n := len(x)
 	tmpX := make([]float64, n)
 	maxDiff := 0.0
+	iterations := 0
 
 	for {
 		maxDiff = 0
@@ -38,11 +38,12 @@ func Solve(prec float64) []float64 {
 				maxDiff = diff
 			}
 		}
+		iterations++
 
 		if maxDiff <= prec {
 			break
 		}
 	}
 
-	return x
+	return x, iterations
 }
