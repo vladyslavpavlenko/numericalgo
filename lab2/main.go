@@ -10,8 +10,8 @@ func main() {
 		Message: "Select a method:",
 		Options: []*prompts.SelectOption[string]{
 			{Label: "Gauss Elimination", Value: "gauss"},
-			{Label: "Tridiagonal Algorithm", Value: "tridiagonal"},
-			{Label: "Jacobi", Value: "jacobi"},
+			{Label: "Thomas Algorithm", Value: "thomas"},
+			{Label: "Jacobi Method", Value: "jacobi"},
 		},
 	})
 	if err != nil {
@@ -23,8 +23,10 @@ func main() {
 	case "jacobi":
 		handlers.Jacobi()
 	case "gauss":
-		handlers.GaussElimination()
+		handlers.Gauss()
+	case "thomas":
+		handlers.Thomas()
 	default:
-		prompts.Error("Unknown prompt.")
+		prompts.Error("Unknown option.")
 	}
 }
