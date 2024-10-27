@@ -2,7 +2,6 @@ package gauss
 
 import (
 	"fmt"
-	"math"
 	"strings"
 )
 
@@ -12,7 +11,7 @@ type Solution struct {
 	Inv   [][]float64
 }
 
-func Solve(prec float64) Solution {
+func Solve() Solution {
 	A := [][]float64{
 		{1, 2, 3, 0},
 		{4, 3, 1, 2},
@@ -63,12 +62,12 @@ func Solve(prec float64) Solution {
 
 	roots := make([]float64, n)
 	for i := 0; i < n; i++ {
-		roots[i] = round(b[i], prec)
+		roots[i] = b[i]
 	}
 
 	return Solution{
 		Roots: roots,
-		Det:   int(round(det, 0)),
+		Det:   int(det),
 		Inv:   invA,
 	}
 }
@@ -80,11 +79,6 @@ func identityMatrix(n int) [][]float64 {
 		identity[i][i] = 1
 	}
 	return identity
-}
-
-func round(x, prec float64) float64 {
-	pow := math.Pow(10, prec)
-	return math.Round(x*pow) / pow
 }
 
 func FormatMatrix(matrix [][]float64) string {

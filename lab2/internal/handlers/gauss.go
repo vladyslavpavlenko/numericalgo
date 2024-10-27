@@ -11,21 +11,17 @@ import (
 	"time"
 )
 
-func GaussElimination() {
+func Gauss() {
 	os.Stdout.Write([]byte(sisteransi.EraseDown()))
 	prompts.Intro(picocolors.BgYellow(picocolors.White(" Gauss Elimination ")))
-
-	prec, err := getPrecision()
-	handleCancel(err)
 
 	s := prompts.Spinner(prompts.SpinnerOptions{})
 	s.Start("Solving")
 	time.Sleep(50 * time.Millisecond)
 	start := time.Now()
-	solution := gauss.Solve(prec)
+	solution := gauss.Solve()
 	dur := time.Since(start)
 	s.Stop("Solved!", 0)
-	handleCancel(err)
 
 	prompts.Note(methods.FormatRoots(solution.Roots), prompts.NoteOptions{Title: "Solution"})
 
